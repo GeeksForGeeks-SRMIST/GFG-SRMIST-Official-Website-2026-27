@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* GFG Shine Text — Green shimmer */
+  .shine-text {
+    background: #1a1a1a -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#1a1a1a),
+        to(#1a1a1a),
+        color-stop(0.5, #2F8D46)
+      ) 0 0 no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-size: 150px;
+    animation: shine 8s infinite linear;
+  }
+
+  /* Dark mode shine text */
+  .dark .shine-text {
+    background: #ffffff -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#ffffff),
+        to(#ffffff),
+        color-stop(0.5, #4ade80)
+      ) 0 0 no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-size: 150px;
+    animation: shine 8s infinite linear;
+  }
+
+  /* GFG gradient text */
+  .gfg-gradient-text {
+    @apply bg-gradient-to-r from-primary-500 to-emerald-400 bg-clip-text text-transparent;
+  }
+
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  /* Section padding */
+  .section-pad {
+    @apply py-20 lg:py-28;
+  }
+
+  /* Gradient background used on multiple sections */
+  .gfg-hero-bg {
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(47, 141, 70, 0.15), transparent),
+                linear-gradient(to bottom, #f8fafc, #ffffff);
+  }
+
+  .dark .gfg-hero-bg {
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(47, 141, 70, 0.12), transparent),
+                linear-gradient(to bottom, #0d1117, #0d1117);
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: #d4f0da;
+  color: #1a5c2a;
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid #2F8D46;
+  outline-offset: 2px;
+}
+
+/* Page transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease, transform 300ms ease;
+}

@@ -1,0 +1,203 @@
+/* --- src/styles/global.css --- */
+
+/* Day/Night Toggle Animation */
+.daynight-anim .wrapper {
+  position: relative;
+  background: #2768aa;
+  width: 360px;
+  height: 140px;
+  border-radius: 70px;
+  box-shadow: inset 1px 8px 12px rgba(0, 0, 0, 0.35),
+    inset -8px -8px 5px rgba(0, 0, 0, 0.45), 0 4px 4px rgba(255, 255, 255, 0.9),
+    inset 1px 12px 4px rgba(43, 83, 132, 0.5);
+  overflow: hidden;
+  transition: 1.6s;
+  cursor: pointer;
+}
+.daynight-anim .wrapper.active {
+  background: #171a29;
+}
+.daynight-anim .sun {
+  width: 110px;
+  height: 110px;
+  background: #fcbd1a;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 18px;
+  box-shadow: inset 8px 8px 12px rgba(255, 255, 255, 0.45),
+    4px 8px 8px rgba(0, 0, 0, 0.35), inset 0 -8px 8px rgba(184, 147, 33, 1);
+  animation: sunFrame-2 1.6s forwards;
+}
+.daynight-anim .wrapper.active .sun {
+  animation: sunFrame 1.6s forwards;
+  background: #c3c9d5;
+}
+
+@keyframes sunFrame {
+  0% {
+    transform: translate(0, -50%);
+    background: #fcbd1a;
+  }
+  75% {
+    transform: translate(250px, -50%);
+  }
+  100% {
+    transform: translate(240px, -50%);
+  }
+}
+@keyframes sunFrame-2 {
+  0% {
+    transform: translate(240px, -50%);
+  }
+  75% {
+    transform: translate(-8px, -50%);
+  }
+  100% {
+    transform: translate(0, -50%);
+  }
+}
+
+.daynight-anim .sun-spot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #999eaf;
+  position: absolute;
+  top: 48px;
+  left: 14px;
+  opacity: 0;
+  transition: opacity 1.6s;
+}
+.daynight-anim .sun-spot-2 {
+  top: 16px;
+  left: 40px;
+  width: 22px;
+  height: 22px;
+}
+.daynight-anim .sun-spot-3 {
+  top: 64px;
+  left: 72px;
+  width: 22px;
+  height: 22px;
+}
+.daynight-anim .wrapper.active .sun-spot {
+  opacity: 1;
+}
+
+.daynight-anim .sun-circle {
+  width: 180px;
+  height: 180px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.1;
+  filter: blur(1px);
+  transition: 1.2s;
+}
+.daynight-anim .wrapper.active .sun-circle {
+  transform: translate(260px, -50%);
+}
+.daynight-anim .sun-circle-two {
+  width: 230px;
+  height: 230px;
+}
+.daynight-anim .wrapper.active .sun-circle-two {
+  transform: translate(200px, -50%);
+}
+.daynight-anim .sun-circle-three {
+  width: 280px;
+  height: 280px;
+}
+.daynight-anim .wrapper.active .sun-circle-three {
+  transform: translate(140px, -50%);
+}
+
+.daynight-anim .background,
+.daynight-anim .background-2 {
+  width: 360px;
+  height: 140px;
+  position: absolute;
+  transition: 1.6s;
+}
+.daynight-anim .background-2 {
+  top: -100%;
+}
+.daynight-anim .wrapper.active .background {
+  transform: translateY(100%);
+}
+.daynight-anim .wrapper.active .background-2 {
+  transform: translateY(100%);
+}
+
+.daynight-anim .star {
+  width: 4px;
+  height: 4px;
+  background: #f1f1ff;
+  border-radius: 50%;
+  position: absolute;
+}
+/* Star positions manually for simplicity in CSS */
+.daynight-anim .star-1 {
+  top: 20px;
+  left: 50px;
+}
+.daynight-anim .star-2 {
+  top: 50px;
+  left: 80px;
+}
+.daynight-anim .star-3 {
+  top: 30px;
+  left: 120px;
+}
+.daynight-anim .star-4 {
+  top: 70px;
+  left: 150px;
+}
+.daynight-anim .star-5 {
+  top: 40px;
+  left: 200px;
+}
+.daynight-anim .star-6 {
+  top: 80px;
+  left: 250px;
+}
+
+.daynight-anim .clouds {
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  opacity: 0.75;
+}
+.daynight-anim .cloud-1 {
+  background: #fff;
+  border-radius: 500px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -20px;
+  left: 40px;
+}
+.daynight-anim .cloud-2 {
+  background: #fff;
+  border-radius: 500px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  left: 80px;
+}
+.daynight-anim .cloud-3 {
+  background: #fff;
+  border-radius: 500px;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: -10px;
+  left: 180px;
+}
