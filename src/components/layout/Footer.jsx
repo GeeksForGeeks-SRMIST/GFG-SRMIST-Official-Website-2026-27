@@ -19,6 +19,7 @@ const quickLinks = [
   { name: "Annual Report", to: "/annual-report"},
   { name: "Blogs",         to: "/blogs"        },
   { name: "Join Us",       to: "/join"         },
+  { name: "Meet The Developer", to: "https://www.linkedin.com/in/md-nayaj-mondal/"},
 ];
 
 const gfgResources = [
@@ -59,20 +60,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-slate-800 pb-12">
 
           {/* Brand Column */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="flex flex-col gap-4">
+          <div className="lg:col-span-0 space-y-4">
+            <div className="flex flex-col items-start leading-none">
               {/* GFG logo */}
               <img
                 src="/assets/Logo/GfG Horizontal Combination Mark (Light Mode)@2x.png"
                 alt="GeeksforGeeks SRMIST"
-                className="h-8 w-auto object-contain brightness-0 invert opacity-90"
+                className="h-8 w-auto object-contain brightness-0 invert opacity-90 block"
                 loading="lazy"
               />
               {/* SRM logo */}
               <img
                 src="/assets/Logo/srmlogo.webp"
                 alt="SRMIST"
-                className="h-24 w-auto object-contain"
+                className="h-36 w-auto object-contain block"
                 loading="lazy"
               />
             </div>

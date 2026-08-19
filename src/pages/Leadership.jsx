@@ -1,10 +1,16 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Linkedin, Globe } from "lucide-react";
 import SEO from "@/components/SEO";
 import SectionHeading from "@/components/common/SectionHeading";
 import TeamCard from "@/components/teams/TeamCard";
 import { coreLeadership, faculty } from "@/data/team";
 import { Crown, Users, GraduationCap } from "lucide-react";
+
+const SOCIAL_ICONS = {
+  linkedin: { Icon: Linkedin, label: "LinkedIn" },
+  website:  { Icon: Globe,    label: "Website"  },
+};
 
 export default function Leadership() {
   return (
@@ -88,7 +94,7 @@ export default function Leadership() {
               title={<>Faculty <span className="gfg-gradient-text">Advisors</span></>}
               subtitle="The department faculty whose mentorship empowers our every initiative."
             />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {faculty.map((f, i) => (
                 <motion.div
                   key={f.name}
@@ -97,15 +103,51 @@ export default function Leadership() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
                   whileHover={{ y: -4 }}
-                  className="flex gap-4 items-start p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-soft hover:shadow-medium transition-all"
+                  className="group bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-neutral-border dark:border-dark-border shadow-soft hover:shadow-medium transition-all"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 flex items-center justify-center font-heading font-bold flex-shrink-0">
-                    {f.name.split(" ").map(n => n[0]).slice(0, 2).join("")}
+                  {/* Photo */}
+                  <div className="h-70 bg-brand-light-green dark:bg-dark-surface overflow-hidden">
+                    {f.avatar ? (
+                      <img
+                        src={f.avatar}
+                        alt={f.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full flex items-center justify-center font-heading font-bold text-xl">
+                          {getInitials(f.name)}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <p className="font-heading font-bold text-slate-900 dark:text-white text-sm">{f.name}</p>
-                    <p className="text-primary-600 dark:text-primary-400 text-xs font-semibold mt-0.5">{f.role}</p>
-                    <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5 leading-tight">{f.department}</p>
+                  {/* Info */}
+                  <div className="p-5">
+                    <h3 className="font-heading font-bold text-text-headline dark:text-white text-sm">{f.name}</h3>
+                    <p className="text-primary-500 dark:text-ocean text-xs font-semibold mt-1">{f.role}</p>
+                    <p className="text-text-muted dark:text-slate-400 text-xs mt-1">{f.department}</p>
+                    {f.links && Object.keys(f.links).length > 0 && (
+                      <div className="flex gap-2 mt-3 pt-2 border-t border-neutral-border dark:border-dark-border">
+                        {Object.entries(f.links).map(([platform, href]) => {
+                          const def = SOCIAL_ICONS[platform];
+                          if (!def || !href) return null;
+                          const { Icon, label } = def;
+                          return (
+                            <a
+                              key={platform}
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${f.name} on ${label}`}
+                              className="w-7 h-7 rounded-full bg-neutral-light dark:bg-dark-surface border border-neutral-border dark:border-dark-border flex items-center justify-center text-text-muted hover:bg-primary-50 hover:text-primary-500 hover:border-primary-200 transition-all"
+                            >
+                              <Icon size={13} />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}

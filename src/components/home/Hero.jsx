@@ -90,15 +90,19 @@ export default function Hero() {
                 Explore Events <ArrowRight size={18} />
               </motion.button>
             </Link>
-            <Link to="/join">
-              <motion.button
-                whileHover={{ scale: 1.02, backgroundColor: "#f1f5f9" }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white px-8 py-4 rounded-xl font-bold hover:border-primary-400 transition-all flex items-center gap-2"
-              >
-                Join Us
-              </motion.button>
-            </Link>
+            <a
+  href="https://chat.whatsapp.com/Bs7EM7GP6VqDBiS2CjIqfP"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <motion.button
+    whileHover={{ scale: 1.02, backgroundColor: "#9ea1a3ff" }}
+    whileTap={{ scale: 0.98 }}
+    className="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white px-8 py-3.5 rounded-xl font-bold hover:border-primary-400 transition-all flex items-center gap-2"
+  >
+    Join Our Family
+  </motion.button>
+</a>
           </div>
 
           {/* Trust badges */}
